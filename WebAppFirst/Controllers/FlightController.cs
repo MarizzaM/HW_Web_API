@@ -84,12 +84,12 @@ namespace WebAppFirst.Controllers
 
         public void Post([FromBody] Flight flight)
         {
-            ExecuteNonQuery($"INSERT INTO Flights VALUES ({flight.Id}, '{flight.OriginCountry}', '{flight.DestCountry}', {flight.Remaining})");
+            ExecuteNonQuery($"INSERT INTO Flights VALUES ('{flight.OriginCountry}', '{flight.DestCountry}', {flight.Remaining})");
         }
 
         public void Put(int id, [FromBody] Flight flight)
         {
-            ExecuteNonQuery($"UPDATE Flights SET Id = {flight.Id}, " +
+            ExecuteNonQuery($"UPDATE Flights SET " +
                 $"DestCountry = '{flight.DestCountry}',  " +
                 $"OriginCountry = '{flight.OriginCountry}', " +
                 $"Remaining = {flight.Remaining} WHERE Id = {flight.Id}");
